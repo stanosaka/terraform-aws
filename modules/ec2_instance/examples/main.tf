@@ -16,6 +16,10 @@ module "test_instances" {
   instance_count = 3
   # count = 3 wrong!!
   name_prefix = "test-instance"
+  enable_systems_manager = true
+  tags = {
+    "BillingGroup" = "szhougroup"
+  }
 }
 
 output "aws_instance_arns" {

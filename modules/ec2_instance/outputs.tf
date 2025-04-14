@@ -15,3 +15,7 @@ output "aws_instance_private_ips" {
   value       = aws_instance.ec2_cluster.*.private_ip
   description = "List of private IPs for all created EC2 instances."
 }
+
+output "aws_instance_role" {
+  value = aws_iam_role.main
+}

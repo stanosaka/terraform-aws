@@ -41,3 +41,9 @@ variable "instance_count" {
     error_message = "The instance_count variable must be greater than or equal to 0"
   }
 }
+
+variable "enable_systems_manager" {
+  type        = bool
+  description = "When enabled the Systems Manager IAM Policy will be attached to the instance."
+  default     = false
+}
