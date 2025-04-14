@@ -5,3 +5,4 @@
 *.AFTER_LAUNCH
 .terraform/
 provider-credentials.tfvars
+.terraform.lock.hcl

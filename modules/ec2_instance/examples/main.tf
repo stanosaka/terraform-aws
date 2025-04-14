@@ -10,18 +10,22 @@ data "aws_subnets" "default" {
   }
 }
 
-module "test_instance" {
-  source      = "../"
-  subnet_id   = data.aws_subnets.default.ids[0]
-  count       = 5
+module "test_instances" {
+  source         = "../"
+  subnet_id      = data.aws_subnets.default.ids[0]
+  instance_count = 3
+  # count = 3 wrong!!
   name_prefix = "test-instance"
 }
 
 output "aws_instance_arns" {
-  # value = [for instance in module.test_instance : instance.aws_instance_arns]
-  value = module.test_instance[*].aws_instance_arns
+  value = module.test_instances.aws_instance_arns
+}
+
+output "aws_instance_ids" {
+  value = module.test_instances.aws_instance_ids
 }
 
 output "aws_instance_ips" {
-  value = module.test_instance[*].aws_instance_ips
+  value = module.test_instances.aws_instance_private_ips
 }
